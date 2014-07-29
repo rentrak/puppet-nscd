@@ -43,7 +43,7 @@
 	paranoia		no
 #	restart-interval	3600
 
-	enable-cache		passwd		<%= ['no', 'yes'][passwd_cache ? 1 : 0] %>
+	enable-cache		passwd		<%= ['no', 'yes'][@passwd_cache ? 1 : 0] %>
 	positive-time-to-live	passwd		600
 	negative-time-to-live	passwd		20
 	suggested-size		passwd		211
@@ -53,7 +53,7 @@
 	max-db-size		passwd		33554432
 	auto-propagate		passwd		yes
 
-	enable-cache		group		<%= ['no', 'yes'][group_cache ? 1 : 0] %>
+	enable-cache		group		<%= ['no', 'yes'][@group_cache ? 1 : 0] %>
 	positive-time-to-live	group		3600
 	negative-time-to-live	group		60
 	suggested-size		group		211
@@ -63,7 +63,7 @@
 	max-db-size		group		33554432
 	auto-propagate		group		yes
 
-	enable-cache		hosts		<%= ['no', 'yes'][hosts_cache ? 1 : 0] %>
+	enable-cache		hosts		<%= ['no', 'yes'][@hosts_cache ? 1 : 0] %>
 	positive-time-to-live	hosts		3600
 	negative-time-to-live	hosts		20
 	suggested-size		hosts		211
@@ -73,7 +73,7 @@
 	max-db-size		hosts		33554432
 
 <% unless @osfamily == 'RedHat' and @operatingsystemrelease.to_f < 6.0 -%>
-	enable-cache		services	<%= ['no', 'yes'][services_cache ? 1 : 0] %>
+	enable-cache		services	<%= ['no', 'yes'][@services_cache ? 1 : 0] %>
 	positive-time-to-live	services	28800
 	negative-time-to-live	services	20
 	suggested-size		services	211
